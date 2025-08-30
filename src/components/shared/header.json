@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_shared_header",
+  "info": {
+    "displayName": "Header",
+    "description": "Header component for global settings"
+  },
+  "options": {},
+  "attributes": {
+    "brand": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.brand"
+    },
+    "navLinks": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.nav-link"
+    }
+  }
+}

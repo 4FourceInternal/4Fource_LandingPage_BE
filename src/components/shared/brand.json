@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_shared_brand",
+  "info": {
+    "displayName": "Brand",
+    "description": "Brand information for header"
+  },
+  "options": {},
+  "attributes": {
+    "logoText": {
+      "type": "string",
+      "required": true,
+      "default": "Qoyy Global"
+    }
+  }
+}

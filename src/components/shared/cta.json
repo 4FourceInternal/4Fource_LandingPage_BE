@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_shared_cta",
+  "info": {
+    "displayName": "CTA",
+    "description": "Call to action component"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "lead": {
+      "type": "text",
+      "required": true
+    },
+    "button": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.button"
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "kind": "singleType",
+  "collectionName": "service_page_contents",
+  "info": {
+    "singularName": "service-page-content",
+    "pluralName": "service-page-contents",
+    "displayName": "Service-page-content",
+    "description": "Service page content"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "seo": {
+      "type": "component",
+      "component": "shared.seo",
+      "repeatable": false
+    },
+    "heading": {
+      "type": "string",
+      "required": true
+    },
+    "focusTitle": {
+      "type": "string",
+      "required": true
+    },
+    "focusLead": {
+      "type": "text",
+      "required": true
+    },
+    "cards": {
+      "type": "component",
+      "component": "shared.service-card",
+      "repeatable": true
+    },
+    "cta": {
+      "type": "component",
+      "component": "shared.cta",
+      "repeatable": false
+    }
+  }
+}

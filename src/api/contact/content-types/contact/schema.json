@@ -1,0 +1,53 @@
+{
+  "kind": "singleType",
+  "collectionName": "contacts",
+  "info": {
+    "singularName": "contact",
+    "pluralName": "contacts",
+    "displayName": "Contact",
+    "description": "Contact page content"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
+    },
+    "heading": {
+      "type": "string",
+      "required": true
+    },
+    "subheading": {
+      "type": "string",
+      "required": true
+    },
+    "lead": {
+      "type": "text",
+      "required": true
+    },
+    "buttons": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.contact-buttons"
+    },
+    "info": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.contact-info"
+    },
+    "offers": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.offer"
+    },
+    "bottomCta": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.bottom-cta"
+    }
+  }
+}

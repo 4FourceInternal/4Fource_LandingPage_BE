@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_shared_contact_info",
+  "info": {
+    "displayName": "Contact Info",
+    "description": "Contact information component"
+  },
+  "options": {},
+  "attributes": {
+    "addressLines": {
+      "type": "json",
+      "required": true
+    },
+    "phone": {
+      "type": "string",
+      "required": true
+    },
+    "email": {
+      "type": "string",
+      "required": true
+    },
+    "hours": {
+      "type": "json",
+      "required": true
+    }
+  }
+}

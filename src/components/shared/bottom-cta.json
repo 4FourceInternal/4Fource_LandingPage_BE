@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_shared_bottom_cta",
+  "info": {
+    "displayName": "Bottom CTA",
+    "description": "Bottom call to action component"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "lead": {
+      "type": "text",
+      "required": true
+    },
+    "buttons": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.button"
+    }
+  }
+}

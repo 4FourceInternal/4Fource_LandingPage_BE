@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_shared_approach",
+  "info": {
+    "displayName": "Approach",
+    "description": "Approach section component"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "items": {
+      "type": "json",
+      "required": true
+    }
+  }
+}

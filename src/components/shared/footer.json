@@ -1,0 +1,30 @@
+{
+  "collectionName": "components_shared_footer",
+  "info": {
+    "displayName": "Footer",
+    "description": "Footer component for global settings"
+  },
+  "options": {},
+  "attributes": {
+    "companyName": {
+      "type": "string",
+      "required": true,
+      "default": "Qoyy Global"
+    },
+    "copyright": {
+      "type": "text",
+      "required": true,
+      "default": "COPYRIGHT Ⓒ 2025 QOYY GLOBAL (002857086-D)‍\nAll rights reserved."
+    },
+    "quickLinks": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.footer-link"
+    },
+    "contactInfo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.contact-info"
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_shared_offer",
+  "info": {
+    "displayName": "Offer",
+    "description": "Offer item component"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "note": {
+      "type": "text",
+      "required": true
+    }
+  }
+}

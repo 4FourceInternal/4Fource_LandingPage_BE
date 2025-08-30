@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_shared_why_us",
+  "info": {
+    "displayName": "Why Us",
+    "description": "Why us section component"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "points": {
+      "type": "json",
+      "required": true
+    }
+  }
+}
