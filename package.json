@@ -9,7 +9,6 @@
     "deploy": "strapi deploy",
     "dev": "strapi develop",
     "develop": "strapi develop",
-
     "start": "strapi start",
     "strapi": "strapi",
     "upgrade": "npx @strapi/upgrade latest",
@@ -20,6 +19,7 @@
     "@strapi/plugin-users-permissions": "5.23.1",
     "@strapi/strapi": "5.23.1",
     "mysql": "^2.18.1",
+    "mysql2": "^3.14.5",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.0.0",
