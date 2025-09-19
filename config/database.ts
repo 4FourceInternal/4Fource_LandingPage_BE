@@ -1,4 +1,4 @@
-module.exports = ({ env }) => ({
+export default ({ env }) => ({
   connection: {
     client: env('DATABASE_CLIENT', 'postgres'),
     connection: {
@@ -10,6 +10,16 @@ module.exports = ({ env }) => ({
       ssl: env.bool('DATABASE_SSL', false) ? {
         rejectUnauthorized: false
       } : false,
+    },
+    pool: {
+      min: env.int('DATABASE_POOL_MIN', 0),
+      max: env.int('DATABASE_POOL_MAX', 10),
+      acquireTimeoutMillis: 60000,
+      createTimeoutMillis: 60000,
+      destroyTimeoutMillis: 60000,
+      idleTimeoutMillis: 60000,
+      reapIntervalMillis: 1000,
+      createRetryIntervalMillis: 100,
     },
     debug: false,
   },
