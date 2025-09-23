@@ -8,7 +8,7 @@
   "attributes": {
     "icon": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "title": {
       "type": "string",
@@ -20,7 +20,7 @@
     },
     "features": {
       "type": "json",
-      "required": true
+      "required": false
     },
     "backgroundImage": {
       "type": "media",
