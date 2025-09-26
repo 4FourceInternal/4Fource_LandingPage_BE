@@ -22,6 +22,10 @@
       "type": "json",
       "required": false
     },
+      "testing": {
+      "type": "text",
+      "required": false
+    },
     "backgroundImage": {
       "type": "media",
       "multiple": false,
