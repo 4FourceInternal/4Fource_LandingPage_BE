@@ -19,4 +19,14 @@ export default [
   'strapi::session',
   'strapi::favicon',
   'strapi::public',
+  {
+    name: 'strapi::cors',
+    config: {
+      origin: ['http://qoyy.portalhub.top', 'https://qoyy.portalhub.top'], // Frontend domain
+      methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS', 'UPDATE'],
+      allowedHeaders: '*', // Allow all headers
+      exposedHeaders: ['Content-Range', 'X-Total-Count'],
+      credentials: true,
+    },
+  },
 ];
