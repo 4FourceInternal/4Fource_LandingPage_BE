@@ -20,9 +20,13 @@
 export default ({ env }) => {
   const port = env.int('PORT', 10000); // Use Render's default port
   const host = env('HOST', '0.0.0.0');
-  const url = 'https://qoyy-backend.portalhub.top';
+  // Use local URL for development, production URL for production
+  const url = env('NODE_ENV') === 'production' 
+    ? 'https://qoyy-backend.portalhub.top' 
+    : `http://localhost:${port}`;
 
   console.log(`Starting Strapi server on ${host}:${port}`);
+  console.log(`Server URL: ${url}`);
 
   return {
     host,
@@ -39,5 +43,7 @@ export default ({ env }) => {
     cron: {
       enabled: false,
     },
+    // Add request timeout to prevent hanging uploads
+    requestTimeout: 300000, // 5 minutes
   };
 };

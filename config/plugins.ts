@@ -9,6 +9,15 @@ export default () => ({
         small: 500,
         xsmall: 64
       },
+      // Add response timeout for uploads
+      responseTimeout: 60000, // 5 minutes
+      // Enable multipart uploads
+      multipart: true,
+      // Use local provider explicitly
+      provider: 'local',
+      providerOptions: {
+        // Remove sizeLimit from providerOptions to fix warning
+      },
     },
   },
 });
