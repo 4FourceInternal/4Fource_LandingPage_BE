@@ -53,8 +53,10 @@ export default [
         'https://qoyy.portalhub.top',
         'http://localhost:3000',
         'http://localhost:1337',
+        'http://localhost:5173', // Vite default port
         'http://127.0.0.1:3000',
-        'http://127.0.0.1:1337'
+        'http://127.0.0.1:1337',
+        'http://127.0.0.1:5173' // Vite default port
       ],
       methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS', 'UPDATE'],
       allowedHeaders: [
