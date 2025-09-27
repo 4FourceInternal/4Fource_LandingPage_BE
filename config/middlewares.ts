@@ -2,7 +2,6 @@ export default [
   'strapi::logger',
   'strapi::errors',
   'strapi::security',
-  'strapi::cors',
   'strapi::poweredBy',
   'strapi::query',
   {
@@ -22,7 +21,8 @@ export default [
   {
     name: 'strapi::cors',
     config: {
-      origin: ['http://qoyy.portalhub.top', 'https://qoyy.portalhub.top'], // Frontend domain
+      origin: ['http://qoyy.portalhub.top', 'https://qoyy.portalhub.top'],
+      // origin: '*', // Allow all origins
       methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS', 'UPDATE'],
       allowedHeaders: '*', // Allow all headers
       exposedHeaders: ['Content-Range', 'X-Total-Count'],
