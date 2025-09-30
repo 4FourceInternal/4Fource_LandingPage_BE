@@ -24,7 +24,7 @@ export default ({ env }) => {
   // Use environment variable for URL, fallback to localhost for development
   const url = env('PUBLIC_URL') || 
     (env('NODE_ENV') === 'production' 
-      ? `https://${env('RENDER_EXTERNAL_HOSTNAME') || 'https://fourfource-landingpage-be.onrender.com'}` 
+      ? `https://${env('RENDER_EXTERNAL_HOSTNAME') || 'fourfource-landingpage-be.onrender.com'}` 
       : `http://localhost:${port}`);
 
   console.log(`Starting Strapi server on ${host}:${port}`);
