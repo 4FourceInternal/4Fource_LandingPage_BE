@@ -18,12 +18,14 @@
 // };
 
 export default ({ env }) => {
-  const port = env.int('PORT', 10000); // Use Render's default port
+  const port = env.int('PORT', 10000);
   const host = env('HOST', '0.0.0.0');
-  // Use local URL for development, production URL for production
-  const url = env('NODE_ENV') === 'production' 
-    ? 'https://qoyy-backend.portalhub.top' 
-    : `http://localhost:${port}`;
+  
+  // Use environment variable for URL, fallback to localhost for development
+  const url = env('PUBLIC_URL') || 
+    (env('NODE_ENV') === 'production' 
+      ? `https://${env('RENDER_EXTERNAL_HOSTNAME') || 'https://fourfource-landingpage-be.onrender.com'}` 
+      : `http://localhost:${port}`);
 
   console.log(`Starting Strapi server on ${host}:${port}`);
   console.log(`Server URL: ${url}`);
