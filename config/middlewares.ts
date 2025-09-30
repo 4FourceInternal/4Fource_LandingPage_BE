@@ -12,15 +12,15 @@ export default [
             "'self'",
             'data:',
             'blob:',
-            'https://qoyy-backend.portalhub.top',
-            'https://qoyy.portalhub.top',
+            'https://fourfource-landingpage-be.onrender.com',
+            'https://fourfource-landingpage-fe.onrender.com',
           ],
           'media-src': [
             "'self'",
             'data:',
             'blob:',
-            'https://qoyy-backend.portalhub.top',
-            'https://qoyy.portalhub.top',
+            'https://fourfource-landingpage-be.onrender.com',
+            'https://fourfource-landingpage-fe.onrender.com',
           ],
           upgradeInsecureRequests: null,
         },
@@ -49,8 +49,7 @@ export default [
     name: 'strapi::cors',
     config: {
       origin: [
-        'http://qoyy.portalhub.top', 
-        'https://qoyy.portalhub.top',
+        'https://fourfource-landingpage-fe.onrender.com', // Your frontend URL
         'http://localhost:3000',
         'http://localhost:1337',
         'http://localhost:5173', // Vite default port
