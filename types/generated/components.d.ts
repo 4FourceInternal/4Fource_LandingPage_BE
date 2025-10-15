@@ -252,10 +252,9 @@ export interface SharedServiceCard extends Struct.ComponentSchema {
     description: Schema.Attribute.Text;
     EmployeeImage: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios'
-    > &
-      Schema.Attribute.Required;
+    >;
     features: Schema.Attribute.JSON;
-    Name: Schema.Attribute.String & Schema.Attribute.Required;
+    Name: Schema.Attribute.String;
     title: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
