@@ -249,13 +249,13 @@ export interface SharedServiceCard extends Struct.ComponentSchema {
     displayName: 'Service Card';
   };
   attributes: {
-    backgroundImage: Schema.Attribute.Media<
+    description: Schema.Attribute.Text;
+    EmployeeImage: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios'
     > &
       Schema.Attribute.Required;
-    description: Schema.Attribute.Text & Schema.Attribute.Required;
     features: Schema.Attribute.JSON;
-    icon: Schema.Attribute.String;
+    Name: Schema.Attribute.String & Schema.Attribute.Required;
     title: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
