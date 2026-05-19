@@ -49,6 +49,8 @@ export default [
     name: 'strapi::cors',
     config: {
       origin: [
+        'https://4fource.com',
+        'https://www.4fource.com',
         'https://fourfource-landingpage-fe.onrender.com', // Your frontend URL
         'http://localhost:3000',
         'http://localhost:1337',
