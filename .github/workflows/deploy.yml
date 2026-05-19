@@ -1,0 +1,29 @@
+name: Deploy Backend
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: be-deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: [self-hosted, backend]
+    steps:
+      - name: Pull latest
+        run: |
+          cd /home/ubuntu/projects/4Fource_LandingPage_BE
+          git fetch origin main
+          git reset --hard origin/main
+
+      - name: Install + build
+        run: |
+          cd /home/ubuntu/projects/4Fource_LandingPage_BE
+          npm ci
+          npm run build
+
+      - name: Restart Strapi
+        run: sudo systemctl restart strapi
