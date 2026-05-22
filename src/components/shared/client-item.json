@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_shared_client_items",
+  "info": {
+    "displayName": "Client",
+    "description": "One client: logo, name and description"
+  },
+  "options": {},
+  "attributes": {
+    "clientName": {
+      "type": "string",
+      "required": true
+    },
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "description": {
+      "type": "text",
+      "required": false
+    }
+  }
+}

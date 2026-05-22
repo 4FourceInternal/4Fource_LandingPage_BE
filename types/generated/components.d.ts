@@ -50,6 +50,19 @@ export interface SharedButton extends Struct.ComponentSchema {
   };
 }
 
+export interface SharedClientItem extends Struct.ComponentSchema {
+  collectionName: 'components_shared_client_items';
+  info: {
+    description: 'One client: logo, name and description';
+    displayName: 'Client';
+  };
+  attributes: {
+    clientName: Schema.Attribute.String & Schema.Attribute.Required;
+    description: Schema.Attribute.Text;
+    logo: Schema.Attribute.Media<'images'>;
+  };
+}
+
 export interface SharedContactButtons extends Struct.ComponentSchema {
   collectionName: 'components_shared_contact_buttons';
   info: {
@@ -191,6 +204,36 @@ export interface SharedOffer extends Struct.ComponentSchema {
   };
 }
 
+export interface SharedOpenProjects extends Struct.ComponentSchema {
+  collectionName: 'components_shared_open_projects';
+  info: {
+    description: 'Clients for public / open projects \u2014 click Add entry to add each client';
+    displayName: 'Open Projects';
+  };
+  attributes: {
+    clients: Schema.Attribute.Component<'shared.client-item', true>;
+    sectionDescription: Schema.Attribute.Text;
+    sectionTitle: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'Open Projects'>;
+  };
+}
+
+export interface SharedPrivateProjects extends Struct.ComponentSchema {
+  collectionName: 'components_shared_private_projects';
+  info: {
+    description: 'Clients for private / confidential projects \u2014 click Add entry to add each client';
+    displayName: 'Private Projects';
+  };
+  attributes: {
+    clients: Schema.Attribute.Component<'shared.client-item', true>;
+    sectionDescription: Schema.Attribute.Text;
+    sectionTitle: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'Private Projects'>;
+  };
+}
+
 export interface SharedProcess extends Struct.ComponentSchema {
   collectionName: 'components_shared_process';
   info: {
@@ -314,6 +357,9 @@ declare module '@strapi/strapi' {
       'shared.bottom-cta': SharedBottomCta;
       'shared.brand': SharedBrand;
       'shared.button': SharedButton;
+      'shared.client-item': SharedClientItem;
+      'shared.open-projects': SharedOpenProjects;
+      'shared.private-projects': SharedPrivateProjects;
       'shared.contact-buttons': SharedContactButtons;
       'shared.contact-info': SharedContactInfo;
       'shared.cta': SharedCta;

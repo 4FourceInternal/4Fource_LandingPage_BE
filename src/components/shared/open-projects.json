@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_shared_open_projects",
+  "info": {
+    "displayName": "Open Projects",
+    "description": "Clients for public / open projects — click Add entry to add each client"
+  },
+  "options": {},
+  "attributes": {
+    "sectionTitle": {
+      "type": "string",
+      "required": true,
+      "default": "Open Projects"
+    },
+    "sectionDescription": {
+      "type": "text",
+      "required": false
+    },
+    "clients": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.client-item"
+    }
+  }
+}
