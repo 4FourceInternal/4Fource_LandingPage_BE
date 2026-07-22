@@ -17,7 +17,7 @@
       "component": "shared.seo",
       "repeatable": false
     },
-    "heading": {
+    "headings": {
       "type": "string",
       "required": true
     },

@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_shared_private_projects",
+  "info": {
+    "displayName": "Private Projects",
+    "description": "Clients for private / confidential projects — click Add entry to add each client"
+  },
+  "options": {},
+  "attributes": {
+    "sectionTitle": {
+      "type": "string",
+      "required": true,
+      "default": "Private Projects"
+    },
+    "sectionDescription": {
+      "type": "text",
+      "required": false
+    },
+    "clients": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.client-item"
+    }
+  }
+}
