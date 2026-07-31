@@ -522,6 +522,7 @@ export interface ApiClientsPageClientsPage extends Struct.SingleTypeSchema {
   };
   attributes: {
     backgroundImage: Schema.Attribute.Media<'images'>;
+    Clients: Schema.Attribute.Component<'shared.client-item', true>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -533,11 +534,6 @@ export interface ApiClientsPageClientsPage extends Struct.SingleTypeSchema {
       'api::clients-page.clients-page'
     > &
       Schema.Attribute.Private;
-    openProjects: Schema.Attribute.Component<'shared.open-projects', false>;
-    privateProjects: Schema.Attribute.Component<
-      'shared.private-projects',
-      false
-    >;
     publishedAt: Schema.Attribute.DateTime;
     seo: Schema.Attribute.Component<'shared.seo', false>;
     updatedAt: Schema.Attribute.DateTime;

@@ -53,13 +53,17 @@ export interface SharedButton extends Struct.ComponentSchema {
 export interface SharedClientItem extends Struct.ComponentSchema {
   collectionName: 'components_shared_client_items';
   info: {
-    description: 'One client: logo, name and description';
+    description: 'One client: logo, name, description and project status';
     displayName: 'Client';
   };
   attributes: {
     clientName: Schema.Attribute.String & Schema.Attribute.Required;
     description: Schema.Attribute.Text;
     logo: Schema.Attribute.Media<'images'>;
+    projectStatus: Schema.Attribute.Enumeration<
+      ['in_development', 'active', 'past']
+    > &
+      Schema.Attribute.DefaultTo<'in_development'>;
   };
 }
 
@@ -358,8 +362,6 @@ declare module '@strapi/strapi' {
       'shared.brand': SharedBrand;
       'shared.button': SharedButton;
       'shared.client-item': SharedClientItem;
-      'shared.open-projects': SharedOpenProjects;
-      'shared.private-projects': SharedPrivateProjects;
       'shared.contact-buttons': SharedContactButtons;
       'shared.contact-info': SharedContactInfo;
       'shared.cta': SharedCta;
@@ -371,6 +373,8 @@ declare module '@strapi/strapi' {
       'shared.media': SharedMedia;
       'shared.nav-link': SharedNavLink;
       'shared.offer': SharedOffer;
+      'shared.open-projects': SharedOpenProjects;
+      'shared.private-projects': SharedPrivateProjects;
       'shared.process': SharedProcess;
       'shared.quote': SharedQuote;
       'shared.rich-text': SharedRichText;

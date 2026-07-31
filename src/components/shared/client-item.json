@@ -2,7 +2,7 @@
   "collectionName": "components_shared_client_items",
   "info": {
     "displayName": "Client",
-    "description": "One client: logo, name and description"
+    "description": "One client: logo, name, description and project status"
   },
   "options": {},
   "attributes": {
@@ -19,6 +19,11 @@
     "description": {
       "type": "text",
       "required": false
+    },
+    "projectStatus": {
+      "type": "enumeration",
+      "enum": ["in_development", "active", "past"],
+      "default": "in_development"
     }
   }
 }

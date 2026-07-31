@@ -14,8 +14,8 @@
   "attributes": {
     "seo": {
       "type": "component",
-      "repeatable": false,
-      "component": "shared.seo"
+      "component": "shared.seo",
+      "repeatable": false
     },
     "heading": {
       "type": "string",
@@ -29,17 +29,14 @@
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": ["images"]
+      "allowedTypes": [
+        "images"
+      ]
     },
-    "openProjects": {
+    "Clients": {
       "type": "component",
-      "repeatable": false,
-      "component": "shared.open-projects"
-    },
-    "privateProjects": {
-      "type": "component",
-      "repeatable": false,
-      "component": "shared.private-projects"
+      "component": "shared.client-item",
+      "repeatable": true
     }
   }
 }
