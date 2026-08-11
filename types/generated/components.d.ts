@@ -250,6 +250,24 @@ export interface SharedProcess extends Struct.ComponentSchema {
   };
 }
 
+export interface SharedProductItem extends Struct.ComponentSchema {
+  collectionName: 'components_shared_product_items';
+  info: {
+    description: 'An in-house product built by Fource Technology';
+    displayName: 'Product';
+  };
+  attributes: {
+    description: Schema.Attribute.Text;
+    logo: Schema.Attribute.Media<'images'>;
+    productName: Schema.Attribute.String & Schema.Attribute.Required;
+    productStatus: Schema.Attribute.Enumeration<
+      ['in_development', 'beta', 'active']
+    > &
+      Schema.Attribute.DefaultTo<'in_development'>;
+    productUrl: Schema.Attribute.String;
+  };
+}
+
 export interface SharedQuote extends Struct.ComponentSchema {
   collectionName: 'components_shared_quotes';
   info: {
@@ -376,6 +394,7 @@ declare module '@strapi/strapi' {
       'shared.open-projects': SharedOpenProjects;
       'shared.private-projects': SharedPrivateProjects;
       'shared.process': SharedProcess;
+      'shared.product-item': SharedProductItem;
       'shared.quote': SharedQuote;
       'shared.rich-text': SharedRichText;
       'shared.seo': SharedSeo;

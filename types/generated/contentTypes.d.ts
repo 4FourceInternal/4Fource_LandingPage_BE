@@ -534,6 +534,7 @@ export interface ApiClientsPageClientsPage extends Struct.SingleTypeSchema {
       'api::clients-page.clients-page'
     > &
       Schema.Attribute.Private;
+    Products: Schema.Attribute.Component<'shared.product-item', true>;
     publishedAt: Schema.Attribute.DateTime;
     seo: Schema.Attribute.Component<'shared.seo', false>;
     updatedAt: Schema.Attribute.DateTime;

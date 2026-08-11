@@ -37,6 +37,11 @@
       "type": "component",
       "component": "shared.client-item",
       "repeatable": true
+    },
+    "Products": {
+      "type": "component",
+      "component": "shared.product-item",
+      "repeatable": true
     }
   }
 }
