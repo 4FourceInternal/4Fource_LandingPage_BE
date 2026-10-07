@@ -3,7 +3,9 @@
 
 services:
   mysql:
-    image: mysql:8
+    # Production Pi uses MariaDB; official image has reliable ARM64 manifests (mysql:8 often fails on Pi Docker)
+    image: mariadb:10.11
+    platform: linux/arm64
     container_name: fource-mysql
     restart: unless-stopped
     environment:

@@ -47,6 +47,26 @@ Frontend nginx proxies `/api` and `/uploads` to the `backend` service on the Doc
 
 ## Raspberry Pi: `no matching manifest for linux/arm/v8`
 
+**First, on the Pi:**
+
+```bash
+uname -m
+docker version
+```
+
+| `uname -m` | Meaning |
+|------------|---------|
+| `aarch64` | 64-bit OS — use `platform: linux/arm64` (this deploy stack) |
+| `armv7l` | **32-bit OS** — `mysql:8` / GHCR arm64 images will **not** work; install **Raspberry Pi OS 64-bit** or build everything locally without `platform: linux/arm64` |
+
+If `docker pull mysql:8` fails but you’re on **aarch64**, Docker may be requesting `linux/arm/v8` while Hub lists `linux/arm64`. This stack uses **MariaDB** instead and sets `platform: linux/arm64`. Try:
+
+```bash
+docker pull --platform linux/arm64 mariadb:10.11
+```
+
+## Raspberry Pi: GHCR `no matching manifest`
+
 Your Pi needs **arm64** images. Check what GHCR published:
 
 ```bash
