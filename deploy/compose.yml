@@ -22,6 +22,7 @@ services:
 
   backend:
     image: ${BACKEND_IMAGE}
+    platform: linux/arm64
     container_name: fource-backend
     restart: unless-stopped
     depends_on:
@@ -51,6 +52,7 @@ services:
 
   frontend:
     image: ${FRONTEND_IMAGE}
+    platform: linux/arm64
     container_name: fource-frontend
     restart: unless-stopped
     depends_on:

@@ -58,11 +58,21 @@ Look for `linux/arm64` in the output.
 
 **Fix A (preferred):** Re-run GitHub Actions after pushing the workflow with `setup-qemu-action` (multi-arch build). Then `docker compose pull` again.
 
-**Fix B (build on the Pi):** Clone both repos under `~/4Fource/`, then:
+**Fix B (don’t wait on CI — build on the Pi):** Clone both repos under `~/4Fource/`, then:
 
 ```bash
 cd ~/4Fource/4Fource_LandingPage_BE/deploy
 docker compose -f compose.yml -f compose.build.yml up -d --build
 ```
 
-This builds native arm64 images locally (first build takes a while on a Pi).
+MySQL still pulls from Docker Hub; only FE/BE build locally. First Strapi build on a Pi can take **45–90 minutes**.
+
+**Which image failed?** Test separately (after `docker login ghcr.io`):
+
+```bash
+docker pull ghcr.io/4fourceinternal/4fource-fe:latest
+docker pull ghcr.io/4fourceinternal/4fource-be:latest
+docker pull mysql:8
+```
+
+CI is configured to publish **`linux/arm64` only** (for this Pi). Re-push both repos after workflow changes, then pull again (~10–15 min per image, not 25+ for dual-arch).
