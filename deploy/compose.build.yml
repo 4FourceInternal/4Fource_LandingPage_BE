@@ -1,0 +1,21 @@
+# Raspberry Pi / ARM: build images locally when GHCR has no arm64 manifest yet.
+# Requires sibling clones:
+#   ~/4Fource/4Fource_LandingPage_BE
+#   ~/4Fource/4Fource_LandingPage_FE
+#
+# From deploy/: docker compose -f compose.yml -f compose.build.yml up -d --build
+
+services:
+  backend:
+    build:
+      context: ..
+      dockerfile: Dockerfile
+    image: fource/backend:local
+    pull_policy: build
+
+  frontend:
+    build:
+      context: ../../4Fource_LandingPage_FE
+      dockerfile: Dockerfile
+    image: fource/frontend:local
+    pull_policy: build

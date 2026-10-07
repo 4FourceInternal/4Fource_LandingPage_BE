@@ -44,3 +44,25 @@ docker compose up -d
 - Strapi admin: `http://SERVER_IP:1337/admin` or your `PUBLIC_URL/admin`
 
 Frontend nginx proxies `/api` and `/uploads` to the `backend` service on the Docker network.
+
+## Raspberry Pi: `no matching manifest for linux/arm/v8`
+
+Your Pi needs **arm64** images. Check what GHCR published:
+
+```bash
+docker buildx imagetools inspect ghcr.io/4fourceinternal/4fource-fe:latest
+docker buildx imagetools inspect ghcr.io/4fourceinternal/4fource-be:latest
+```
+
+Look for `linux/arm64` in the output.
+
+**Fix A (preferred):** Re-run GitHub Actions after pushing the workflow with `setup-qemu-action` (multi-arch build). Then `docker compose pull` again.
+
+**Fix B (build on the Pi):** Clone both repos under `~/4Fource/`, then:
+
+```bash
+cd ~/4Fource/4Fource_LandingPage_BE/deploy
+docker compose -f compose.yml -f compose.build.yml up -d --build
+```
+
+This builds native arm64 images locally (first build takes a while on a Pi).
