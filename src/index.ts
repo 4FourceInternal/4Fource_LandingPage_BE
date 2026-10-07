@@ -1,8 +1,16 @@
 import type { Core } from '@strapi/strapi';
 
-const CLIENTS_PAGE_UID = 'api::clients-page.clients-page';
+const PUBLIC_SINGLE_TYPES = [
+  'api::home.home',
+  'api::about.about',
+  'api::contact.contact',
+  'api::global.global',
+  'api::service-page-content.service-page-content',
+  'api::info.info',
+  'api::clients-page.clients-page',
+];
 
-async function enablePublicClientsPageAccess(strapi: Core.Strapi) {
+async function enablePublicSingleTypeAccess(strapi: Core.Strapi) {
   try {
     const publicRole = await strapi.db
       .query('plugin::users-permissions.role')
@@ -10,27 +18,29 @@ async function enablePublicClientsPageAccess(strapi: Core.Strapi) {
 
     if (!publicRole) return;
 
-    const action = `${CLIENTS_PAGE_UID}.find`;
-    const existing = await strapi.db
-      .query('plugin::users-permissions.permission')
-      .findOne({
-        where: { action, role: publicRole.id },
-      });
+    for (const uid of PUBLIC_SINGLE_TYPES) {
+      const action = `${uid}.find`;
+      const existing = await strapi.db
+        .query('plugin::users-permissions.permission')
+        .findOne({
+          where: { action, role: publicRole.id },
+        });
 
-    if (!existing) {
-      await strapi.db.query('plugin::users-permissions.permission').create({
-        data: { action, role: publicRole.id, enabled: true },
-      });
-      strapi.log.info(`[bootstrap] Public permission created: ${action}`);
-    } else if (!existing.enabled) {
-      await strapi.db.query('plugin::users-permissions.permission').update({
-        where: { id: existing.id },
-        data: { enabled: true },
-      });
-      strapi.log.info(`[bootstrap] Public permission enabled: ${action}`);
+      if (!existing) {
+        await strapi.db.query('plugin::users-permissions.permission').create({
+          data: { action, role: publicRole.id, enabled: true },
+        });
+        strapi.log.info(`[bootstrap] Public permission created: ${action}`);
+      } else if (!existing.enabled) {
+        await strapi.db.query('plugin::users-permissions.permission').update({
+          where: { id: existing.id },
+          data: { enabled: true },
+        });
+        strapi.log.info(`[bootstrap] Public permission enabled: ${action}`);
+      }
     }
   } catch (err) {
-    strapi.log.warn('[bootstrap] Could not set clients-page public permissions:', err);
+    strapi.log.warn('[bootstrap] Could not set public single-type permissions:', err);
   }
 }
 
@@ -38,6 +48,6 @@ export default {
   register(/* { strapi }: { strapi: Core.Strapi } */) {},
 
   async bootstrap({ strapi }: { strapi: Core.Strapi }) {
-    await enablePublicClientsPageAccess(strapi);
+    await enablePublicSingleTypeAccess(strapi);
   },
 };
