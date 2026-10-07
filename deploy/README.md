@@ -5,7 +5,7 @@ Uses images built by GitHub Actions on push to `main`:
 | Service  | Image |
 |----------|--------|
 | Backend  | `ghcr.io/4fourceinternal/4fource-be:latest` |
-| Frontend | `ghcr.io/freezeyy/4fource-fe:latest` |
+| Frontend | `ghcr.io/4fourceinternal/4fource-fe:latest` |
 
 ## First-time server setup
 
