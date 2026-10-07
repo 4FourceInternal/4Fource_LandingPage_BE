@@ -1,37 +1,48 @@
-# Production stack — pull pre-built images from GHCR (no local build).
-# Run from this directory: docker compose --env-file .env up -d
+# Same database / Docker pattern as DevDNA (compose.yml on the Pi).
+# Run from this directory (uses deploy/.env automatically):
+#   docker compose up -d
 
 services:
   mysql:
-    # Production Pi uses MariaDB; official image has reliable ARM64 manifests (mysql:8 often fails on Pi Docker)
-    image: mariadb:10.11
+    image: mysql:8
     platform: linux/arm64
     container_name: fource-mysql
-    restart: unless-stopped
+    restart: always
+
+    security_opt:
+      - seccomp:unconfined
+
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+
     volumes:
       - fource-db-data:/var/lib/mysql
+
     healthcheck:
-      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
-      interval: 10s
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 5s
       timeout: 5s
       retries: 10
-      start_period: 90s
 
   backend:
     image: ${BACKEND_IMAGE}
     platform: linux/arm64
     container_name: fource-backend
-    restart: unless-stopped
+    restart: always
+
+    security_opt:
+      - seccomp:unconfined
+
     depends_on:
       mysql:
         condition: service_healthy
+
     ports:
       - "${STRAPI_PORT:-1337}:1337"
+
     environment:
       NODE_ENV: production
       HOST: 0.0.0.0
@@ -49,6 +60,7 @@ services:
       API_TOKEN_SALT: ${API_TOKEN_SALT}
       TRANSFER_TOKEN_SALT: ${TRANSFER_TOKEN_SALT}
       ENCRYPTION_KEY: ${ENCRYPTION_KEY}
+
     volumes:
       - fource-uploads:/app/public/uploads
 
@@ -56,9 +68,14 @@ services:
     image: ${FRONTEND_IMAGE}
     platform: linux/arm64
     container_name: fource-frontend
-    restart: unless-stopped
+    restart: always
+
+    security_opt:
+      - seccomp:unconfined
+
     depends_on:
       - backend
+
     ports:
       - "${WEB_PORT:-8080}:80"
 
