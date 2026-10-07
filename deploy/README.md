@@ -29,6 +29,22 @@ docker compose up -d
 # See main project docs or ask team for mysqldump procedure.
 ```
 
+## MariaDB `unhealthy` on first start
+
+On a Pi, first init can take a minute. Use the MariaDB image’s built-in `healthcheck.sh` (see `compose.yml`).
+
+If the DB volume was corrupted by a failed first run:
+
+```bash
+docker compose down
+docker volume rm deploy_fource-db-data   # name from `docker volume ls`
+docker compose up -d
+```
+
+Check logs: `docker logs fource-mysql`
+
+---
+
 ## Updates (after git push to main and Actions finish)
 
 ```bash
